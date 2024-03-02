@@ -32,20 +32,20 @@ public class LoginController {
             @RequestParam(name = "password") String password,
             @RequestParam(name = "chair",required = false) Integer chair,
             @RequestParam(name = "group",required = false) Long group,
-            @RequestParam(name = "course",required = false) Integer course,
             @RequestParam(name = "role") String role,
             @RequestParam(name = "image", required = false)MultipartFile image
     ){
-
         MultipartFile image1 = null;
         if(image!=null){
             image1 = image;
         }
+        System.out.println(group);
+        System.out.println(chair);
         RegistrationRequest registrationRequest =null;
         if(group ==null  && chair!=null){
             registrationRequest= new RegistrationRequest(firstName,lastName,
                     email,password,chair,role,image1);
-        }else if(group !=null && course!=null && chair==null){
+        }else if(group !=null  && chair==null){
             registrationRequest= new RegistrationRequest(firstName,lastName,
                     email,password,group,role,image1);
         }

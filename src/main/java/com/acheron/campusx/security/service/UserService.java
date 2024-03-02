@@ -52,9 +52,15 @@ public class UserService implements UserDetailsService {
         if(request.getRole().equals("STUDENT")){
             return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),null,groupRepository.findById(request.getGroup()).orElseThrow(), image, Role.STUDENT));
         }else if(request.getRole().equals("TEACHER")){
-            return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),chairRepository.findById(request.getChair()).orElseThrow(), null, image, Role.TEACHER));
+            return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),chairRepository.findById(Long.valueOf(request.getChair())).orElseThrow(), null, image, Role.TEACHER));
         }
         throw new RuntimeException();
+    }
+    public List<User> findAll(){
+        return userRepository.findAll();
+    }
+    public Optional<User> findById(Long id){
+        return userRepository.findById(id);
     }
 
     public User save(User user){
