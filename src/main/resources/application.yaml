@@ -1,0 +1,22 @@
+spring:
+
+#  allowed-cors: ${CORS}
+  allowed-cors: asdsad
+
+  datasource:
+    url: jdbc:postgresql://campusx.cmarky7auuui.eu-north-1.rds.amazonaws.com:5432/campusx
+    username: acheron
+#    password: ${PASSWORD}
+    password: qwerty1232
+    driver-class-name: org.postgresql.Driver
+
+jwt:
+  secret: asdsadaad23r324yf214uyf12fo21y4ft21f421uf4yu12f412asdsadaad23r324yf214uyf12fo21y4ft21f421uf4yu12f412asdsadaad23r324yf214uyf12fo21y4ft21f421uf4yu12f412asdsadaad23r324yf214uyf12fo21y4ft21f421uf4yu12f412
+#  secret: ${SECRET}
+aws:
+  region: eu-north-1
+  access_key: AKIA5Q2A6DOFL6W4K37Z
+  secret_access_key: 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
+
+server:
+  port: 8080
