@@ -1,4 +1,4 @@
-package com.acheron.campusx.security.repository;
+package com.acheron.campusx.repository;
 
 import com.acheron.campusx.entity.Chair;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -3,6 +3,7 @@ package com.acheron.campusx.security.entity;
 
 import com.acheron.campusx.entity.Chair;
 import com.acheron.campusx.entity.Group;
+import com.acheron.campusx.entity.Rating;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -30,6 +32,8 @@ public class User implements UserDetails {
     private String lastName;
     private String email;
     private String password;
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratings;
     @ManyToOne
     @JoinColumn(name = "chair")
     private Chair chair;

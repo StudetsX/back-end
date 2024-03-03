@@ -33,6 +33,16 @@ public class JwtUtil {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
         claims.put("id",userDetails.getId());
+        if(userDetails.getChair()!=null){
+            claims.put("chairId",userDetails.getChair().getId());
+            claims.put("chairName",userDetails.getChair().getName());
+        } else if (userDetails.getGroup()!=null) {
+            claims.put("groupId",userDetails.getGroup().getId());
+            claims.put("groupName",userDetails.getGroup().getName());
+
+        }
+//        claims.put("group_id",userDetails.getGroup());
+//        claims.put("chair",userDetails.getChair())
         claims.put("name",userDetails.getFirstName());
         claims.put("role", userDetails.getRole().getAuthority());
         claims.put("roles", rolesList);

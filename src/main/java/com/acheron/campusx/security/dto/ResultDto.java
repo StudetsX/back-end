@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponseDto {
-    private String firstName;
-    private String lastName;
-    private String image;
-    private String group;
+public class ResultDto {
+    private Integer key;
+    private Integer value;
 }

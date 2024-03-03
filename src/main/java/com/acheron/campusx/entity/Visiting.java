@@ -10,15 +10,17 @@ import lombok.*;
 @ToString
 @Entity
 @Builder
-public class Rating {
+public class Visiting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "users_id")
     private User user;
-    @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
-    private Float value;
+    @Column(name = "max_tasks")
+    private Integer maxTask;
+    @Column(name = "current_tasks")
+    private Integer currentTask;
+
+
+
 }

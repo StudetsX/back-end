@@ -1,5 +1,6 @@
 package com.acheron.campusx.security.config;
 
+import com.acheron.campusx.security.entity.Role;
 import com.acheron.campusx.security.jwt.JwtFilter;
 import com.acheron.campusx.security.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -42,8 +43,10 @@ public class SecurityConfig {
                 csrf(AbstractHttpConfigurer::disable).
                 cors(Customizer.withDefaults()).
                 authorizeHttpRequests(request->
-                        request.requestMatchers("/api/v2/login","/api/v2/registration","/asd1","/api/v2/saveImage").
+                        request.requestMatchers("/api/v2/login","/api/v2/registration","/asd1","/api/v2/saveImage","/api/v2/findAllGroups","api/v2/findAllChairs","/api/v2/users","/api/v2/findAllSubjects").
                                 permitAll().
+                                requestMatchers("/api/v2/createTest").
+                                hasAuthority(Role.TEACHER.getAuthority()).
                                 anyRequest().
                                 authenticated()).
                 userDetailsService(userService).

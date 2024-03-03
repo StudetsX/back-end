@@ -1,7 +1,7 @@
 package com.acheron.campusx.controller;
 
-import com.acheron.campusx.entity.Chair;
-import com.acheron.campusx.repository.ChairRepository;
+import com.acheron.campusx.entity.Subject;
+import com.acheron.campusx.repository.SubjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,10 +12,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v2")
 @RequiredArgsConstructor
-public class ChairController {
-    private final ChairRepository chairRepository;
-    @GetMapping("/findAllChairs")
-    public List<Chair> findAllChairs(){
-        return chairRepository.findAll();
+public class SubjectController {
+    private final SubjectRepository subjectRepository;
+
+    @GetMapping("/findAllSubjects")
+    public List<Subject> findAllSubjects(){
+        return subjectRepository.findAll();
     }
 }

@@ -5,8 +5,8 @@ import com.acheron.campusx.entity.Group;
 import com.acheron.campusx.security.dto.RegistrationRequest;
 import com.acheron.campusx.security.entity.User;
 import com.acheron.campusx.security.entity.Role;
-import com.acheron.campusx.security.repository.ChairRepository;
-import com.acheron.campusx.security.repository.GroupRepository;
+import com.acheron.campusx.repository.ChairRepository;
+import com.acheron.campusx.repository.GroupRepository;
 import com.acheron.campusx.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,14 +50,18 @@ public class UserService implements UserDetailsService {
             image = imageService.saveImage(request.getImage());
         }
         if(request.getRole().equals("STUDENT")){
-            return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),null,groupRepository.findById(request.getGroup()).orElseThrow(), image, Role.STUDENT));
+            return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),null,null,groupRepository.findById(request.getGroup()).orElseThrow(), image, Role.STUDENT));
         }else if(request.getRole().equals("TEACHER")){
-            return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),chairRepository.findById(Long.valueOf(request.getChair())).orElseThrow(), null, image, Role.TEACHER));
+            return userRepository.save(new User(null, request.getFirstName(), request.getLastName(), request.getEmail(), request.getPassword(),null,chairRepository.findById(Long.valueOf(request.getChair())).orElseThrow(), null, image, Role.TEACHER));
         }
         throw new RuntimeException();
     }
     public List<User> findAll(){
         return userRepository.findAll();
+    }
+    public List<User> findAll(String group,String lastName){
+        return userRepository.findAll(group,lastName);
+//        return userRepository.findAll(group==null?"":group,lastName==null?"":lastName);
     }
     public Optional<User> findById(Long id){
         return userRepository.findById(id);

@@ -1,9 +1,8 @@
 package com.acheron.campusx.controller;
 
 import com.acheron.campusx.entity.Group;
-import com.acheron.campusx.security.repository.GroupRepository;
+import com.acheron.campusx.repository.GroupRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
